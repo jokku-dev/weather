@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 
-@Entity(tableName = "cities")
+@Entity(tableName = "weather")
 @TypeConverters(Converters::class)
-data class City(
+data class Weather(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val name: String?,
     val size: String?,
