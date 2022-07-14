@@ -1,3 +1,18 @@
 <resources>
+
     <string name="app_name">weather</string>
+
+    <string-array name="city_size_array">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Big</item>
+    </string-array>
+
+    <string-array name="season_array">
+        <item>Winter</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Autumn</item>
+    </string-array>
+
 </resources>
