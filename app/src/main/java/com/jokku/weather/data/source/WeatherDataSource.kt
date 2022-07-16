@@ -1,4 +1,4 @@
-package com.jokku.weather.data.local
+package com.jokku.weather.data.source
 
 import com.jokku.weather.data.Weather
 
