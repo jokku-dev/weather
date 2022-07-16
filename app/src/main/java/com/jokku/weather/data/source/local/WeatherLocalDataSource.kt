@@ -1,6 +1,7 @@
-package com.jokku.weather.data.local
+package com.jokku.weather.data.source.local
 
 import com.jokku.weather.data.Weather
+import com.jokku.weather.data.source.WeatherDataSource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

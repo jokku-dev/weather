@@ -1,4 +1,4 @@
-package com.jokku.weather.data.local
+package com.jokku.weather.data.source.local
 
 import androidx.room.Dao
 import androidx.room.Insert
