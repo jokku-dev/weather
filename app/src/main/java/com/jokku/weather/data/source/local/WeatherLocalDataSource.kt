@@ -1,5 +1,6 @@
 package com.jokku.weather.data.source.local
 
+import androidx.lifecycle.LiveData
 import com.jokku.weather.data.Weather
 import com.jokku.weather.data.source.WeatherDataSource
 import kotlinx.coroutines.CoroutineDispatcher
@@ -10,8 +11,13 @@ class WeatherLocalDataSource(
     private val weatherDao: WeatherDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ): WeatherDataSource {
-    override suspend fun insertCity(weather: Weather) = withContext(ioDispatcher) {
-        weatherDao.insertCity(weather)
+
+    override fun observeCitiesNames(): LiveData<List<String>> {
+        return weatherDao.observeCitiesNames()
+    }
+
+    override suspend fun insertWeather(weather: Weather) = withContext(ioDispatcher) {
+        weatherDao.insertWeather(weather)
     }
 
     override suspend fun getCitiesNames(): List<String> = withContext(ioDispatcher) {

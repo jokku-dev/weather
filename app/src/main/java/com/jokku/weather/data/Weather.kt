@@ -10,8 +10,8 @@ import androidx.room.TypeConverters
 data class Weather(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val name: String?,
-    val size: String?,
-    val season: String?,
-    val temp: List<String>
+    val size: String,
+    val seasons: List<String>,
+    val temps: List<String>
 ) {
 }

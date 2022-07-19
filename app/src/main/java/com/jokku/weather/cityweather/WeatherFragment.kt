@@ -12,10 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WeatherFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = WeatherFragment()
-    }
-
     private lateinit var viewModel: WeatherViewModel
 
     override fun onCreateView(
