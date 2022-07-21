@@ -7,11 +7,13 @@ import androidx.room.TypeConverters
 
 @Entity(tableName = "weather")
 @TypeConverters(Converters::class)
-data class Weather(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+data class Weather @JvmOverloads constructor(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String?,
-    val size: String,
-    val seasons: List<String>,
-    val temps: List<String>
+    val size: String?,
+    val winterTemps: List<String>?,
+    val springTemps: List<String>?,
+    val summerTemps: List<String>?,
+    val autumnTemps: List<String>?
 ) {
 }

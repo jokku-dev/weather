@@ -8,5 +8,8 @@ interface WeatherDataSource {
     suspend fun insertWeather(weather: Weather)
     suspend fun getCitiesNames(): List<String>
     suspend fun getCitySizeByName(city: String): String
-    suspend fun getTemperaturesByNameAndSeason(name: String, season: String): List<String>
+    suspend fun getWinterTemps(name: String, size: String): List<String>
+    suspend fun getSpringTemps(name: String, size: String): List<String>
+    suspend fun getSummerTemps(name: String, size: String): List<String>
+    suspend fun getAutumnTemps(name: String, size: String): List<String>
 }

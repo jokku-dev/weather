@@ -24,15 +24,23 @@ class WeatherLocalDataSource(
         return@withContext weatherDao.getCitiesNames()
     }
 
-    override suspend fun getCitySizeByName(city: String): String = withContext(ioDispatcher){
+    override suspend fun getCitySizeByName(city: String): String = withContext(ioDispatcher) {
         return@withContext weatherDao.getCitySizeByName(city)
     }
 
-    override suspend fun getTemperaturesByNameAndSeason(
-        name: String,
-        season: String
-    ): List<String> = withContext(ioDispatcher) {
-        return@withContext weatherDao.getTemperaturesByNameAndSeason(name, season)
+    override suspend fun getWinterTemps(name: String, size: String): List<String> = withContext(ioDispatcher) {
+        return@withContext weatherDao.getWinterTemps(name, size)
     }
 
+    override suspend fun getSpringTemps(name: String, size: String): List<String> = withContext(ioDispatcher) {
+        return@withContext weatherDao.getSpringTemps(name, size)
+    }
+
+    override suspend fun getSummerTemps(name: String, size: String): List<String> = withContext(ioDispatcher) {
+        return@withContext weatherDao.getSummerTemps(name, size)
+    }
+
+    override suspend fun getAutumnTemps(name: String, size: String): List<String> = withContext(ioDispatcher) {
+        return@withContext weatherDao.getAutumnTemps(name, size)
+    }
 }

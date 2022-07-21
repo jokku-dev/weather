@@ -11,71 +11,71 @@
 
         <variable
             name="viewmodel"
-            type="com.jokku.weather.cityweather.WeatherViewModel" />
+            type="com.jokku.weather.weather.WeatherViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".cityweather.WeatherFragment">
+        tools:context=".weather.WeatherFragment">
 
         <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/city_spin"
+            android:id="@+id/city_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:entries="@{viewmodel.cityNames}"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@+id/city_size"
+            app:layout_constraintEnd_toStartOf="@+id/city_size_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/city_size"
+            android:id="@+id/city_size_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:textAlignment="center"
             android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/city_spin"
+            app:layout_constraintBottom_toBottomOf="@+id/city_spinner"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/city_spin"
-            app:layout_constraintTop_toTopOf="@+id/city_spin"
+            app:layout_constraintStart_toEndOf="@+id/city_spinner"
+            app:layout_constraintTop_toTopOf="@+id/city_spinner"
             tools:text="Medium" />
 
         <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/season_spin"
+            android:id="@+id/season_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:entries="@array/season_array"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toStartOf="@+id/season_aver_temp"
+            app:layout_constraintEnd_toStartOf="@+id/season_average_temp_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/city_spin" />
+            app:layout_constraintTop_toBottomOf="@+id/city_spinner" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/season_aver_temp"
+            android:id="@+id/season_average_temp_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:textAlignment="center"
             android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="@+id/season_spin"
+            app:layout_constraintBottom_toBottomOf="@+id/season_spinner"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/season_spin"
-            app:layout_constraintTop_toTopOf="@+id/season_spin"
+            app:layout_constraintStart_toEndOf="@+id/season_spinner"
+            app:layout_constraintTop_toTopOf="@+id/season_spinner"
             tools:text="+20" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_fab"
+            android:id="@+id/add_city_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

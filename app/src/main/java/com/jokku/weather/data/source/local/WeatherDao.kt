@@ -22,9 +22,15 @@ interface WeatherDao {
     @Query("SELECT size FROM weather WHERE name = :city")
     suspend fun getCitySizeByName(city: String): String
     
-    @Query("SELECT seasons FROM weather WHERE name = :city")
-    suspend fun getSeasonsByName(city: String): List<String>
+    @Query("SELECT winterTemps FROM weather WHERE name = :name AND size = :size")
+    suspend fun getWinterTemps(name: String, size: String): List<String>
 
-    @Query("SELECT temps FROM weather WHERE name = :name")
-    suspend fun getWinterTemperaturesByNameAndSeason(name: String): List<String>
+    @Query("SELECT springTemps FROM weather WHERE name = :name AND size = :size")
+    suspend fun getSpringTemps(name: String, size: String): List<String>
+
+    @Query("SELECT summerTemps FROM weather WHERE name = :name AND size = :size")
+    suspend fun getSummerTemps(name: String, size: String): List<String>
+
+    @Query("SELECT autumnTemps FROM weather WHERE name = :name AND size = :size")
+    suspend fun getAutumnTemps(name: String, size: String): List<String>
 }

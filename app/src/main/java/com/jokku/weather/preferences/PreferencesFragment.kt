@@ -6,27 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.jokku.weather.R
+import com.jokku.weather.databinding.FragmentPreferencesBinding
 
 class PreferencesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PreferencesFragment()
-    }
+    private val viewModel: PreferencesViewModel by viewModels()
 
-    private lateinit var viewModel: PreferencesViewModel
+    private lateinit var viewDataBinding: FragmentPreferencesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_preferences, container, false)
-    }
+        viewDataBinding = FragmentPreferencesBinding.inflate(inflater, container, false).apply {
+            viewmodel = viewModel
+        }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PreferencesViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+        return viewDataBinding.root
     }
-
 }
