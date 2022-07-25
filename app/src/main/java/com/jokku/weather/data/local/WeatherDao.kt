@@ -1,11 +1,11 @@
-package com.jokku.weather.data.source.local
+package com.jokku.weather.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.jokku.weather.data.Weather
+import com.jokku.weather.data.local.entity.Weather
 
 @Dao
 interface WeatherDao {
@@ -14,23 +14,20 @@ interface WeatherDao {
     suspend fun insertWeather(weather: Weather)
 
     @Query("SELECT name FROM weather")
-    fun observeCitiesNames(): LiveData<List<String>>
-
-    @Query("SELECT name FROM weather")
-    suspend fun getCitiesNames(): List<String>
+    fun getCitiesNames(): LiveData<List<String>>
 
     @Query("SELECT size FROM weather WHERE name = :city")
-    suspend fun getCitySizeByName(city: String): String
+    fun getCitySizeByName(city: String): LiveData<String>
     
     @Query("SELECT winterTemps FROM weather WHERE name = :name AND size = :size")
-    suspend fun getWinterTemps(name: String, size: String): List<String>
+    fun getWinterTemps(name: String, size: String): LiveData<List<String>>
 
     @Query("SELECT springTemps FROM weather WHERE name = :name AND size = :size")
-    suspend fun getSpringTemps(name: String, size: String): List<String>
+    fun getSpringTemps(name: String, size: String): LiveData<List<String>>
 
     @Query("SELECT summerTemps FROM weather WHERE name = :name AND size = :size")
-    suspend fun getSummerTemps(name: String, size: String): List<String>
+    fun getSummerTemps(name: String, size: String): LiveData<List<String>>
 
     @Query("SELECT autumnTemps FROM weather WHERE name = :name AND size = :size")
-    suspend fun getAutumnTemps(name: String, size: String): List<String>
+    fun getAutumnTemps(name: String, size: String): LiveData<List<String>>
 }
