@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,10 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="City"
-        android:inputType="textPersonName"
+        android:inputType="textCapWords"
         android:minHeight="48dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/pref_city_size_spinner"
@@ -26,7 +27,6 @@
         android:id="@+id/pref_city_size_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:entries="@array/city_size_array"
         android:minHeight="48dp"
@@ -35,67 +35,210 @@
         app:layout_constraintStart_toEndOf="@+id/pref_city_name_edit"
         app:layout_constraintTop_toTopOf="@+id/pref_city_name_edit" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/pref_season_spinner"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/month_temp_1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:entries="@array/season_array"
+        android:ems="10"
+        android:hint="December"
+        android:inputType="numberSigned"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/first_month_temp_edit"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pref_city_name_edit" />
 
     <EditText
-        android:id="@+id/first_month_temp_edit"
+        android:id="@+id/month_temp_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="1 month"
-        android:inputType="textPersonName"
+        android:hint="January"
+        android:inputType="numberSigned"
         android:minHeight="48dp"
+        android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/pref_season_spinner"
-        app:layout_constraintEnd_toStartOf="@+id/second_month_temp_edit"
-        app:layout_constraintStart_toEndOf="@+id/pref_season_spinner"
-        app:layout_constraintTop_toTopOf="@+id/pref_season_spinner" />
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_1"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_3"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_1"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_1" />
 
     <EditText
-        android:id="@+id/second_month_temp_edit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="2 month"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/first_month_temp_edit"
-        app:layout_constraintEnd_toStartOf="@+id/third_month_temp_edit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/first_month_temp_edit"
-        app:layout_constraintTop_toTopOf="@+id/first_month_temp_edit" />
-
-    <EditText
-        android:id="@+id/third_month_temp_edit"
+        android:id="@+id/month_temp_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="3 month"
-        android:inputType="textPersonName"
+        android:hint="February"
+        android:inputType="numberSigned"
         android:minHeight="48dp"
+        android:textAlignment="center"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/second_month_temp_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/second_month_temp_edit"
-        app:layout_constraintTop_toTopOf="@+id/second_month_temp_edit" />
+        app:layout_constraintStart_toEndOf="@+id/month_temp_2"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_2" />
+
+    <EditText
+        android:id="@+id/month_temp_4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="March"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_temp_1" />
+
+    <EditText
+        android:id="@+id/month_temp_5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="April"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_4"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_6"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_4"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_4" />
+
+    <EditText
+        android:id="@+id/month_temp_6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="May"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_5"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_5" />
+
+    <EditText
+        android:id="@+id/month_temp_7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="June"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_temp_4" />
+
+    <EditText
+        android:id="@+id/month_temp_8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="July"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_7"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_9"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_7"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_7" />
+
+    <EditText
+        android:id="@+id/month_temp_9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="August"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_8"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_8" />
+
+    <EditText
+        android:id="@+id/month_temp_10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="September"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month_temp_7" />
+
+    <EditText
+        android:id="@+id/month_temp_11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="October"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_10"
+        app:layout_constraintEnd_toStartOf="@+id/month_temp_12"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_10"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_10" />
+
+    <EditText
+        android:id="@+id/month_temp_12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="November"
+        android:inputType="numberSigned"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/month_temp_11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/month_temp_11"
+        app:layout_constraintTop_toTopOf="@+id/month_temp_11" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/confirm_fab"
@@ -108,4 +251,3 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

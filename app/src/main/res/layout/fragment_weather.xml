@@ -2,66 +2,66 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weather_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".cityweather.WeatherFragment">
+    tools:context=".weather.WeatherFragment">
 
     <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/city_spin"
+        android:id="@+id/citySpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/city_size"
+        app:layout_constraintEnd_toStartOf="@+id/citySizeText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/city_size"
+        android:id="@+id/citySizeText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/city_spin"
+        app:layout_constraintBottom_toBottomOf="@+id/citySpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/city_spin"
-        app:layout_constraintTop_toTopOf="@+id/city_spin"
+        app:layout_constraintStart_toEndOf="@+id/citySpinner"
+        app:layout_constraintTop_toTopOf="@+id/citySpinner"
         tools:text="Medium" />
 
     <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/season_spin"
+        android:id="@+id/seasonSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_weight="1"
+        android:entries="@array/season_array"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/season_aver_temp"
+        app:layout_constraintEnd_toStartOf="@+id/averageTempText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/city_spin" />
+        app:layout_constraintTop_toBottomOf="@+id/citySpinner" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/season_aver_temp"
+        android:id="@+id/averageTempText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/season_spin"
+        app:layout_constraintBottom_toBottomOf="@+id/seasonSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/season_spin"
-        app:layout_constraintTop_toTopOf="@+id/season_spin"
+        app:layout_constraintStart_toEndOf="@+id/seasonSpinner"
+        app:layout_constraintTop_toTopOf="@+id/seasonSpinner"
         tools:text="+20" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_fab"
+        android:id="@+id/addCityFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
