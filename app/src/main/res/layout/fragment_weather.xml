@@ -5,13 +5,14 @@
     android:id="@+id/weather_coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".weather.WeatherFragment">
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/citySpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/citySizeText"
@@ -23,6 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/citySpinner"
@@ -35,10 +37,11 @@
         android:id="@+id/seasonSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:minHeight="48dp"
         android:entries="@array/season_array"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/averageTempText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/citySpinner" />
@@ -48,6 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/seasonSpinner"
@@ -60,6 +64,8 @@
         android:id="@+id/addCityFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -2,9 +2,11 @@ package com.jokku.weather.preferences
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.jokku.weather.R
 import com.jokku.weather.data.local.entity.Weather
 import com.jokku.weather.databinding.FragmentPreferencesBinding
@@ -24,8 +26,8 @@ class PreferencesFragment : Fragment(R.layout.fragment_preferences) {
     }
 
     private fun setupFab() {
-        binding.confirmFab.let {
-            it.setOnClickListener {
+        binding.confirmFab.let { fab ->
+            fab.setOnClickListener { click ->
                 val city = binding.prefCityNameEdit.text.toString()
                 val size = binding.prefCitySizeSpinner.selectedItem.toString()
                 val winterTemps = listOf(binding.monthTemp1.text.toString(),
@@ -37,10 +39,15 @@ class PreferencesFragment : Fragment(R.layout.fragment_preferences) {
                 val autumnTemps = listOf(binding.monthTemp10.text.toString(),
                     binding.monthTemp11.text.toString(), binding.monthTemp12.text.toString())
                 val weather = Weather(city, size, winterTemps, springTemps, summerTemps, autumnTemps)
-                viewModel.insertWeather(weather)
-                val action =
-                    PreferencesFragmentDirections.actionPreferencesFragmentToWeatherFragment()
-                findNavController().navigate(action)
+                if (city.isNotEmpty() && size.isNotEmpty() && winterTemps.isNotEmpty()
+                    && springTemps.isNotEmpty() && summerTemps.isNotEmpty() && autumnTemps.isNotEmpty()) {
+                    viewModel.insertWeather(weather)
+                    val action =
+                        PreferencesFragmentDirections.actionPreferencesFragmentToWeatherFragment()
+                    findNavController().navigate(action)
+                } else {
+                    Snackbar.make(click, "Fill all the fields", Snackbar.LENGTH_SHORT).show()
+                }
             }
         }
     }

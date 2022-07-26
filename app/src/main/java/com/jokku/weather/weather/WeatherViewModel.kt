@@ -1,6 +1,9 @@
 package com.jokku.weather.weather
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
 import com.jokku.weather.data.repo.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -10,8 +13,7 @@ class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository
 ) : ViewModel() {
 
-    private val emptyLiveData: LiveData<List<String>> by lazy { MutableLiveData(emptyList()) }
-
+    private val emptyLiveData: LiveData<String> by lazy { MutableLiveData("") }
 
     fun getCitiesNames() = repository.getCitiesNames()
 
@@ -20,17 +22,34 @@ class WeatherViewModel @Inject constructor(
     fun getAverageSeasonTemp(chosenCity: String, chosenSeason: String): LiveData<String> {
 
         val liveData = when (chosenSeason) {
-            "Winter" -> repository.getWinterTemps(chosenCity, chosenSeason)
-            "Spring" -> repository.getSpringTemps(chosenCity, chosenSeason)
-            "Summer" -> repository.getSummerTemps(chosenCity, chosenSeason)
-            "Autumn" -> repository.getAutumnTemps(chosenCity, chosenSeason)
+            "Winter" -> repository.getWinterTemps(chosenCity)
+            "Spring" -> repository.getSpringTemps(chosenCity)
+            "Summer" -> repository.getSummerTemps(chosenCity)
+            "Autumn" -> repository.getAutumnTemps(chosenCity)
             else -> emptyLiveData
         }
-
-        val averageTemp = Transformations.map(liveData) { list ->
-            if (list.isNotEmpty()) { list.sumOf { it.toInt() }.div(list.size).toString() }
-            else "enter correct season"
+        return Transformations.map(liveData) { temps ->
+            if (temps.isNotEmpty()) {
+                temps.split(",").sumOf { it.toInt() }.also {
+                        if (it != 0) it.div(3)
+                    }.toString()
+                } else {
+                ""
+            }
         }
-        return averageTemp
+        /*val averageTemp: LiveData<String> = Transformations.map(liveData) { temps ->
+            calcAverageTemp(temps)
+        }
+        return averageTemp*/
+    }
+
+    private fun calcAverageTemp(temps: String): String {
+        return if (temps.isNotEmpty()) {
+            temps.trim().split(",").also { list ->
+                list.sumOf { it.toInt() }.also {
+                    if (it != 0) it.div(list.size)
+                }
+            }.toString()
+        } else ""
     }
 }

@@ -2,7 +2,6 @@ package com.jokku.weather.di
 
 import android.content.Context
 import androidx.room.Room
-import com.jokku.weather.data.local.WeatherDao
 import com.jokku.weather.data.local.WeatherDatabase
 import com.jokku.weather.data.repo.DefaultWeatherRepository
 import com.jokku.weather.data.repo.WeatherRepository

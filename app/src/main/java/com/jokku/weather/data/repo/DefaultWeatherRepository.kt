@@ -13,12 +13,12 @@ class DefaultWeatherRepository(
 
     override fun getCitySizeByName(city: String) = weatherDao.getCitySizeByName(city)
 
-    override fun getWinterTemps(name: String, size: String) = weatherDao.getWinterTemps(name, size)
+    override fun getWinterTemps(name: String) = weatherDao.getWinterTemps(name)
 
-    override fun getSpringTemps(name: String, size: String) = weatherDao.getSpringTemps(name, size)
+    override fun getSpringTemps(name: String) = weatherDao.getSpringTemps(name)
 
-    override fun getSummerTemps(name: String, size: String) = weatherDao.getSummerTemps(name, size)
+    override fun getSummerTemps(name: String) = weatherDao.getSummerTemps(name)
 
-    override fun getAutumnTemps(name: String, size: String) = weatherDao.getAutumnTemps(name, size)
+    override fun getAutumnTemps(name: String) = weatherDao.getAutumnTemps(name)
 
 }
