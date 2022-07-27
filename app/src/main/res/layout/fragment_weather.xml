@@ -40,24 +40,35 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:entries="@array/season_array"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/averageTempText"
+        app:layout_constraintEnd_toStartOf="@+id/tempFormatSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/citySpinner" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/tempFormatSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seasonSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seasonSpinner"
+        app:layout_constraintTop_toTopOf="@+id/seasonSpinner" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/averageTempText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/seasonSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/seasonSpinner"
-        app:layout_constraintTop_toTopOf="@+id/seasonSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seasonSpinner"
         tools:text="+20" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

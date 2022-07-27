@@ -13,14 +13,14 @@ class WeatherViewModel @Inject constructor(
     private val repository: WeatherRepository
 ) : ViewModel() {
 
-    private val emptyLiveData: LiveData<String> by lazy { MutableLiveData("") }
+    private val emptyLiveData: MutableLiveData<String> by lazy { MutableLiveData() }
+    private val newTemp: MutableLiveData<String> by lazy { MutableLiveData() }
 
     fun getCitiesNames() = repository.getCitiesNames()
 
     fun getCitySizeByName(chosenCity: String) = repository.getCitySizeByName(chosenCity)
 
     fun getAverageSeasonTemp(chosenCity: String, chosenSeason: String): LiveData<String> {
-
         val liveData = when (chosenSeason) {
             "Winter" -> repository.getWinterTemps(chosenCity)
             "Spring" -> repository.getSpringTemps(chosenCity)
@@ -29,27 +29,28 @@ class WeatherViewModel @Inject constructor(
             else -> emptyLiveData
         }
         return Transformations.map(liveData) { temps ->
-            if (temps.isNotEmpty()) {
-                temps.split(",").sumOf { it.toInt() }.also {
-                        if (it != 0) it.div(3)
-                    }.toString()
-                } else {
-                ""
-            }
+            calcAverage(temps)
         }
-        /*val averageTemp: LiveData<String> = Transformations.map(liveData) { temps ->
-            calcAverageTemp(temps)
-        }
-        return averageTemp*/
     }
 
-    private fun calcAverageTemp(temps: String): String {
-        return if (temps.isNotEmpty()) {
-            temps.trim().split(",").also { list ->
-                list.sumOf { it.toInt() }.also {
-                    if (it != 0) it.div(list.size)
-                }
-            }.toString()
-        } else ""
+    fun changeTempFormat(temp: String, tempFormat: String): MutableLiveData<String> {
+        newTemp.value = when (tempFormat) {
+            "Celsius" -> temp.toInt()
+            "Fahrenheit" -> (temp.toDouble() * 1.8 + 32).toInt()
+            "Kelvin" -> (temp.toDouble() + 273.15).toInt()
+            else -> ""
+        }.toString()
+        return newTemp
     }
+
+    private fun calcAverage(temps: String): String {
+        return if (temps.isNotEmpty()) {
+            temps.split(",").sumOf { it.toInt() }.also {
+                if (it != 0) it.div(3)
+            }.toString()
+        } else {
+            ""
+        }
+    }
+
 }
